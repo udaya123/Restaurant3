@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Restaurants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Actions</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.city %></td>
+       
+        <td></td>
+        <td><%= link_to 'Show', user_restaurant_path(restaurant.id, @user_id) %></td>
+        <td><%= link_to 'Edit', edit_user_restaurant_path(restaurant, current_user) %></td>
+        <td><%= link_to 'Destroy',user_restaurant_path(restaurant, current_user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+<select class="form-control" id="box1">
+      <option><a href="javascript:void(0);">BREAKFAST</a></option>
+      <option><a href="javascript:void(0);">LUNCH</a></option>
+      <option><a href="javascript:void(0);">DINNER</a></option>
+    </select>
+
+    <select class="form-control" id="box2">
+      <option><a href="javascript:void(0);">BOSTON</a></option>
+      <option><a href="javascript:void(0);">CHICAGO</a></option>
+      <option><a href="javascript:void(0);">NEW YORK</a></option>
+    </select>
+
+    <script type="text/javascript" src="JavascriptLab1_userselection.js"></script>
+
+<%= link_to 'New', new_user_restaurant_path(current_user) %>
