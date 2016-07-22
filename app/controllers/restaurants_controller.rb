@@ -1,13 +1,15 @@
 class RestaurantsController < ApplicationController
-  #before_action :set_user
+  #before_action :authenticate_user!
+  before_action :set_user
+  #before_action :validate_user
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = current_user.restaurants.all    #@restaurants = Restaurant.all
+    @restaurants = User.find(params[:user_id]).restaurants.all    #@restaurants = Restaurant.all
 
-    @user_id = params['user_id']
+    
   end
 
   # GET /restaurants/1
@@ -28,23 +30,23 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   # POST /restaurants.json
   def create
-    #@restaurant = Restaurant.new(restaurant_params)
-    restaurant = params[:restaurant]
-        @restaurant = current_user.restaurants.create(name: restaurant[:name], address: restaurant[:address], city: restaurant[:city])
-        redirect_to user_restaurants_path(current_user)
-      end
-
-
-   # respond_to do |format|
-    #  if @restaurant.save
-     #   format.html { redirect_to user_restaurants_path(current_user), notice: 'Restaurant was successfully created.' }
-      #  format.json { render :show, status: :created, location: @restaurant }
-      #else
-       # format.html { render :new }
-        #format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+    @restaurant = @user.restaurants.new(restaurant_params)
+    #restaurant = params[:restaurant]
+      #@restaurant = current_user.restaurants.create(name: restaurant[:name], address: restaurant[:address], city: restaurant[:city])
+       # redirect_to user_restaurants_path(current_user)
       #end
-    #end
-  #end
+
+
+   respond_to do |format|
+     if @restaurant.save
+      format.html { redirect_to user_restaurants_path(current_user), notice: 'Restaurant was successfully created.' }
+       format.json { render :show, status: :created, location: @restaurant }
+      else
+       format.html { render :new }
+       format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
@@ -71,6 +73,15 @@ class RestaurantsController < ApplicationController
   end
 
   private
+  def validate_user
+    #throw @user 
+     if user_sign_in?
+    redirect_to  users_path if current_user != @user
+      end
+      end
+      def set_user
+      @user = User.find(params[:user_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])
