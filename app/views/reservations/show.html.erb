@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reservation.user_id %>
+</p>
+
+
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @reservation.restaurant_id %>
+</p>
+
+
+
+<p>
+  <strong>Email:</strong>
+  <%= @reservation.email %>
+</p>
+
+
+
+<p>
+  <strong>Requesteddatetime:</strong>
+  <%= @reservation.requesteddatetime %>
+</p>
+
+
+
+<p>
+  <strong>Shortmessage:</strong>
+  <%= @reservation.shortmessage %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_restaurant_reservation_path(@restaurant, @reservation), class: 'btn btn-primary' unless @restaurant %> |
+<%= link_to 'Back', restaurant_reservations_path(@user),  class: 'btn btn-link' unless @restaurant %>

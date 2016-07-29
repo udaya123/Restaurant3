@@ -1,5 +1,20 @@
 module ApplicationHelper
-  def mark_required(object, attribute)
-  "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
+  
+  def is_owner?()
+        if current_user.role == 'Owner'
+        return true
+      else
+  return false
+  end
+  end
+
+  def is_patron?()
+        if current_user.role == 'Patron'
+        return true
+      else
+  return false
+  end
+  end
 end
-end
+
+

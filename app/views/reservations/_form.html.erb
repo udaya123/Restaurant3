@@ -1,0 +1,55 @@
+<%= form_for([@user, @restaurant, @reservation]) do |f| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id, :value =>@reservation.user_id? ? @reservation.user_id : current_user.id %>
+  </div>
+
+
+  
+  <div class="field">
+    <%= f.label :restaurant_id %>
+    <%= f.text_field :restaurant_id, :value => @restaurant.id %>
+  </div>
+ 
+  
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, :value =>@reservation.email? ? @reservation.email : current_user.email %>
+  </div>
+
+  
+  
+
+  <div class="field">
+    <%= f.label :requesteddatetime %>
+    <%= f.datetime_select :requesteddatetime %>
+  </div>
+
+  
+
+  <div class="field">
+    <%= f.label :shortmessage %>
+    <%= f.text_area :shortmessage %>
+  </div>
+
+ 
+   <p>* <em>required</em></p> 
+ 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
