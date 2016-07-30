@@ -1,11 +1,15 @@
-<h1> 
+ 
+<div class="jumbotron">
+  <div class="container">
+    <% if user_signed_in? %>
+    <%= link_to "View Restaurants", user_restaurants_path(current_user), class: 'btn  btn-primary btn-lg' %>
+    <% else %>
+      <h1>Welcome</h1>
+    <%= link_to "Sign Up", new_user_registration_path, class: 'btn  btn-primary btn-lg', style: "color: black;" %>
+    <%= link_to "Sign In",  new_user_session_path, class: 'btn  btn-primary btn-lg', style: "color: black;" %>
+    <% end %>
+  </div>
+</div>
 
 
-<h1>Welcome</h1>
 
-<% if user_signed_in? %>
-<%= link_to "View Restaurants", user_restaurants_path(current_user) %>
-<% else %>
-<%= link_to "Sign Up", new_user_registration_path %>
-<%= link_to "Sign In", new_user_session_path %>
-<% end %>
