@@ -75,13 +75,13 @@ class RestaurantsController < ApplicationController
   private
   def validate_user
     #throw @user 
-     if user_sign_in?
+    if user_sign_in?
     redirect_to  users_path if current_user != @user
-      end
-      end
-      def set_user
-      @user = User.find(params[:user_id])
     end
+  end
+  def set_user
+    @user = User.find(params[:user_id])
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
       @restaurant = Restaurant.find(params[:id])

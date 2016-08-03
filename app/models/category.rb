@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  belongs_to :restaurant
-  has_many :restaurants
+  has_many :rest_cats
+  has_many :restaurants, through: :rest_cats
 end

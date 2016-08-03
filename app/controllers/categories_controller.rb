@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @restaurants =@category.restaurants.all
   end
 
   # GET /categories/new
@@ -24,8 +25,9 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    @category = Category.new(category_params)
 
+    @category = Category.new(category_params)
+    @category.restaurant_id = @restaurant.id
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }

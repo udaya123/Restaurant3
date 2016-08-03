@@ -4,6 +4,11 @@
   <strong>Cuisinetype:</strong>
   <%= @category.cuisinetype %>
 </p>
+ 
+    <% @restaurants.each do|restaurant| %>
+    <p><%= restaurant.name %> </p>
+    <% end %>
+
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

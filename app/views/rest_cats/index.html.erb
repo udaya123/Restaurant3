@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rest Cats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rsetaurant</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rest_cats.each do |rest_cat| %>
+      <tr>
+        <td><%= rest_cat.rsetaurant_id %></td>
+        <td><%= rest_cat.category_id %></td>
+        <td><%= link_to 'Show', rest_cat %></td>
+        <td><%= link_to 'Edit', edit_rest_cat_path(rest_cat) %></td>
+        <td><%= link_to 'Destroy', rest_cat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rest Cat', new_rest_cat_path %>

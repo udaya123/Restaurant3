@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rsetaurant:</strong>
+  <%= @rest_cat.rsetaurant_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @rest_cat.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_rest_cat_path(@rest_cat) %> |
+<%= link_to 'Back', rest_cats_path %>
