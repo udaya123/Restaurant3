@@ -4,7 +4,7 @@ RSpec.describe "stars/edit", type: :view do
   before(:each) do
     @star = assign(:star, Star.create!(
       :userwhostarred => "MyString",
-      :Restaurantthatwasstarred => "MyString"
+      :restaurantthatwasstarred => "MyString"
     ))
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "stars/edit", type: :view do
 
       assert_select "input#star_userwhostarred[name=?]", "star[userwhostarred]"
 
-      assert_select "input#star_Restaurantthatwasstarred[name=?]", "star[Restaurantthatwasstarred]"
+      assert_select "input#star_restaurantthatwasstarred[name=?]", "star[restaurantthatwasstarred]"
     end
   end
 end

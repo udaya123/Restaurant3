@@ -5,11 +5,11 @@ RSpec.describe "stars/index", type: :view do
     assign(:stars, [
       Star.create!(
         :userwhostarred => "Userwhostarred",
-        :Restaurantthatwasstarred => "Restaurantthatwasstarred"
+        :restaurantthatwasstarred => "Restaurantthatwasstarred"
       ),
       Star.create!(
         :userwhostarred => "Userwhostarred",
-        :Restaurantthatwasstarred => "Restaurantthatwasstarred"
+        :restaurantthatwasstarred => "Restaurantthatwasstarred"
       )
     ])
   end

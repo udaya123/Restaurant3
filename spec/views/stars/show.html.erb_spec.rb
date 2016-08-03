@@ -4,7 +4,7 @@ RSpec.describe "stars/show", type: :view do
   before(:each) do
     @star = assign(:star, Star.create!(
       :userwhostarred => "Userwhostarred",
-      :Restaurantthatwasstarred => "Restaurantthatwasstarred"
+      :restaurantthatwasstarred => "Restaurantthatwasstarred"
     ))
   end
 

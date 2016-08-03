@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datetimecreated:</strong>
+  <%= @star.datetimecreated %>
+</p>
+
+<p>
+  <strong>Userwhostarred:</strong>
+  <%= @star.userwhostarred %>
+</p>
+
+<p>
+  <strong>Restaurantthatwasstarred:</strong>
+  <%= @star.restaurantthatwasstarred %>
+</p>
+
+<%= link_to 'Edit', edit_star_path(@star) %> |
+<%= link_to 'Back', stars_path %>

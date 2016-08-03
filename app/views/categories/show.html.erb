@@ -2,11 +2,14 @@
 
 <p>
   <strong>Cuisinetype:</strong>
+
   <%= @category.cuisinetype %>
 </p>
  
     <% @restaurants.each do|restaurant| %>
-    <p><%= restaurant.name %> </p>
+    <p>
+    <strong>Restaurant:</strong>
+    <%= restaurant.name %> </p>
     <% end %>
 
 
