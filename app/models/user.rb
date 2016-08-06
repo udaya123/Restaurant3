@@ -7,5 +7,6 @@ class User < ApplicationRecord
          has_many :restaurants
          has_many :reservations
          has_many :stars
+      #   has many :category, through: :restaurants 
          validates :email, presence: true
 end
