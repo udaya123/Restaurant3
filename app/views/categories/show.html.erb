@@ -10,6 +10,7 @@
     <p>
     <strong>Restaurant:</strong>
     <%= restaurant.name %> </p>
+    <%= link_to 'Make A Reservation', new_restaurant_reservation_path(restaurant)%>
     <% end %>
 
 
