@@ -8,25 +8,19 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = User.find(params[:user_id]).restaurants.all    #@restaurants = Restaurant.all
-
-    
   end
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+ @restaurant = current_user.restaurants.find(params[:id])
   end
-
-  # GET /restaurants/new
-  def new
-    @restaurant = Restaurant.new
-  end
-
-  # GET /restaurants/1/edit
-  def edit
-    @restaurant = current_user.restaurants.find(params[:id])
-  end
-
+def new
+   @restaurant = Restaurant.new
+ end
+ def edit
+ @restaurant = current_user.restaurants.find(params[:id])
+end
   # POST /restaurants
   # POST /restaurants.json
   def create
@@ -35,7 +29,7 @@ class RestaurantsController < ApplicationController
       #@restaurant = current_user.restaurants.create(name: restaurant[:name], address: restaurant[:address], city: restaurant[:city])
        # redirect_to user_restaurants_path(current_user)
       #end
-
+      
 
    respond_to do |format|
      if @restaurant.save
@@ -75,8 +69,10 @@ class RestaurantsController < ApplicationController
   private
   def validate_user
     #throw @user 
+   # redirect_to localhost:3000/users/User.find(params[:user_id])/restaurants
     if user_sign_in?
     redirect_to  users_path if current_user != @user
+   # redirect_to localhost:3000/users/User.find(params[:user_id])/restaurants
     end
   end
   def set_user
